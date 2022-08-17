@@ -14,8 +14,10 @@
   --red:#DC3545;
 }
 body{
-  display: grid;
-  place-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   padding: 15px;
   background-color: var(--light-gray);
@@ -34,6 +36,7 @@ form{
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 label{
   color: var(--black);
@@ -59,13 +62,13 @@ input[type="submit"]{
   font-size: 15px;
   font-weight: 500;
   background-color: #0B5ED7;
+  cursor: pointer;
 }
-
 .input-wrapper{
   position: relative;
   width: 100%;
   max-width: 300px;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
 }
 .alert-icon{
   display: none;
@@ -87,4 +90,39 @@ input.alert{
   border: 1px solid var(--red);
   border-bottom: 2px solid var(--red);
   box-shadow: none;
+}
+.oauth-btn{
+  display:flex;
+  align-items: center;
+  width: 200px;
+  height: 35px;
+  background-color: #0B5ED7;
+}
+.divisor{
+  width: 100%;
+  max-width: 300px;
+  height: 2px;
+  background-color: var(--gray);
+  text-align: center;
+  margin: 22px 0;
+}
+.divisor > p {
+  display: inline-block;
+  line-height: 1;
+  transform: translate(0, -11px);
+  padding: 0 8px;
+  background-color: var(--light-gray);
+}
+.oauth-btn{
+  cursor: pointer;
+}
+.oauth-btn > img{
+  width:35px;
+  padding: 4px;
+  margin: 0 10px;
+  background-color: #fff;
+}
+.oauth-btn > span {
+  color:#fff;
+  font-weight: 500;
 }
