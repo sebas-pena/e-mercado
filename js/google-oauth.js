@@ -20,18 +20,16 @@ const auth = getAuth()
 const provider = new GoogleAuthProvider()
 document.querySelector("#google-singin").addEventListener("click", async () => {
 	provider.addScope("profile")
-	signInWithPopup(auth, provider)
-		.then(({ user }) => {
-			const { displayName, email, photoUrl } = user
-			window.localStorage.setItem(
-				"user",
-				JSON.stringify({
-					name: displayName,
-					email: email,
-					photoUrl: photoUrl,
-				})
-			)
-			window.location.href = "/banner.html"
-		})
-		.catch((e) => console.log(e))
+	signInWithPopup(auth, provider).then(({ user }) => {
+		const { displayName, email, photoUrl } = user
+		window.localStorage.setItem(
+			"user",
+			JSON.stringify({
+				name: displayName,
+				email: email,
+				photoUrl: photoUrl,
+			})
+		)
+		window.location.href = "/banner.html"
+	})
 })
