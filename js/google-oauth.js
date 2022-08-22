@@ -26,8 +26,8 @@ document.querySelector("#google-singin").addEventListener("click", async () => {
 			"user",
 			JSON.stringify({
 				name: displayName,
-				email: email,
-				photoUrl: photoUrl,
+				email,
+				photoUrl,
 			})
 		)
 		window.location.href = "./banner.html"
