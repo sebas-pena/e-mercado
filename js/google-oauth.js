@@ -30,6 +30,6 @@ document.querySelector("#google-singin").addEventListener("click", async () => {
 				photoUrl,
 			})
 		)
-		window.location.href = "./banner.html"
+		window.location.href = "./"
 	})
 })
