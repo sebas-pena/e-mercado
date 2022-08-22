@@ -12,6 +12,10 @@
 nav a {
   text-decoration: none;
 }
+.logout-btn{
+  background-color: transparent;
+  border: none;
+}
 
 .bd-placeholder-img {
   font-size: 1.125rem;
