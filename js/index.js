@@ -13,4 +13,4 @@ document.addEventListener("DOMContentLoaded", function () {
 	})
 })
 
-!localStorage.getItem("user") && window.location.replace("./login.html")
+
