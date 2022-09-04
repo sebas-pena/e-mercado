@@ -49,3 +49,33 @@ logoutbtn &&
 		localStorage.removeItem("user")
 		window.location.replace("./login.html")
 	})
+
+const userNavItem = document.querySelector("#user-nav")
+const userEmail = localStorage.getItem("user")
+const createNavUserDropDown = () => {
+	userNavItem.innerHTML = `
+	<button id="user-nav__btn" class="nav-link nav-user__btn">${userEmail}</button>
+	<div id="user-nav__select-box">
+		<button id="logout-btn">Cerrar sesión</button>
+	</div>
+	`
+	const userBtn = document.querySelector("#user-nav__btn")
+	const logoutBtn = document.querySelector("#logout-btn")
+	const selectBox = document.querySelector("#user-nav__select-box")
+
+	userBtn.addEventListener("click", () => {
+		selectBox.classList.toggle("open")
+		userBtn.classList.toggle("active")
+	})
+	document.addEventListener("click", ({ target }) => {
+		if (!target.closest("#user-nav")) {
+			selectBox.classList.remove("open")
+			userBtn.classList.remove("active")
+		}
+	})
+	logoutBtn.addEventListener("click", () => {
+		localStorage.removeItem("user")
+		location.href = "/login.html"
+	})
+}
+userNavItem && createNavUserDropDown()
