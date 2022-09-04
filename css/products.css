@@ -180,9 +180,12 @@ input::-webkit-inner-spin-button {
   font-size: 12px;
   color: var(--dark-gray);
 }
-
+.product-list > li:hover .add-to-favorite{
+  visibility: visible;
+}
 .add-to-favorite{
   position: absolute;
+  visibility: hidden;
   top: 10px;
   right: 10px;
   display: flex;
