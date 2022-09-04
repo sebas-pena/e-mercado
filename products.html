@@ -20,7 +20,7 @@
 	</head>
 
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+		<nav class="navbar navbar-expand-lg navbar-dark p-1">
 			<div class="container">
 				<button
 					class="navbar-toggler"
@@ -44,16 +44,52 @@
 						<li class="nav-item">
 							<a class="nav-link" href="sell.html">Vender</a>
 						</li>
-						<li class="nav-item">
-							<button class="nav-link logout-btn" id="logout">
-								Cerrar sesión
-							</button>
-						</li>
+						<li class="nav-item" id="user-nav"></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
-		<main></main>
+		<main>
+			<h1></h1>
+			<p class="category__subtitle">
+				Listado de todos los productos de la categoria
+				<span id="subtitle-name"></span>
+			</p>
+			<div id="products__sorts-ctn">
+				<button class="filter-btn" value="price-desc">
+					<i class="fas fa-sort-amount-down mr-1"></i>$
+				</button>
+				<button class="filter-btn" value="price-asc">
+					<i class="fas fa-sort-amount-up mr-1"></i>$
+				</button>
+				<button class="filter-btn" value="rel-desc">
+					<i class="fas fa-sort-amount-down mr-1"></i>Rel.
+				</button>
+			</div>
+			<div id="products__filters-ctn">
+				<div id="search-ctn">
+					<i class="fas fa-search"></i>
+					<input type="search" placeholder="Bucar.." id="search-filter" />
+				</div>
+				<div id="filters-ctn">
+					<span>Precio:</span>
+					<input
+						class="filter-input"
+						type="number"
+						id="min-price-filter"
+						placeholder="min."
+					/>
+					<input
+						class="filter-input"
+						type="number"
+						id="max-price-filter"
+						placeholder="máx."
+					/>
+					<button class="filter-btn" id="apply-filters">Filtrar</button>
+					<button class="btn btn-link btn-sm" id="clear-filter">Limpiar</button>
+				</div>
+			</div>
+		</main>
 		<footer class="text-muted">
 			<div class="container">
 				<p class="float-end">

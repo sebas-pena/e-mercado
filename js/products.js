@@ -1,9 +1,14 @@
 let mainElement = document.querySelector("main")
 let favorites = JSON.parse(localStorage.getItem("favorites")) || []
-console.log(favorites)
+let allProducts = []
+let searchInputValue = undefined
+let sortCriteria = undefined
+let minPrice = undefined
+let maxPrice = undefined
+const productListItem = document.createElement("ul")
+productListItem.classList.add("product-list")
 
 const createProductItem = ({
-	img,
 	name,
 	id,
 	cost,
@@ -12,49 +17,26 @@ const createProductItem = ({
 	image,
 	description,
 }) => {
-	const product = document.createElement("li")
 	let favoriteClass = favorites.includes(id) ? "active" : "inactive"
-	console.log(favoriteClass)
-	product.innerHTML = `
-  <a class="product__ctn" href="product-info.html?id=${id}"> 
-    <img class="product__image" src="${image}" alt="${name}">
-			<div class="product__info">
-				<h2 class="product__title">${name}</h2>
-				<p class="product__description">${description}</p>
-				<p class="product__price">${currency} ${cost}</p>
-				<p class="product__sold-count">vendidos: ${soldCount}</p>
-		</div>
-	</a>
-	<button class="add-to-favorite ${favoriteClass}" onclick="handleFavorite(this,${id})">
-		<img src="./svg/heart.svg" alt="heart"   >
-	</button>
-  `
-	return product
+	return `
+		<li>
+			<a class="product__ctn" href="product-info.html?id=${id}"> 
+				<img class="product__image" src="${image}" alt="${name}">
+					<div class="product__info">
+						<h2 class="product__title">${name}</h2>
+						<p class="product__description">${description}</p>
+						<p class="product__price">${currency} ${cost}</p>
+						<p class="product__sold-count">vendidos: ${soldCount}</p>
+				</div>
+			</a>
+			<button class="add-to-favorite ${favoriteClass}" onclick="handleFavorite(this,${id})">
+				<img src="./svg/heart.svg" alt="heart">
+			</button>
+		</li>
+	`
 }
-/* 
-  busca los productos de una categoria
-  por defecto la de autos para que se vea el ejemplo
-*/
-const id = localStorage.getItem("catID") || 101
-fetch(`https://japceibal.github.io/emercado-api/cats_products/${id}.json`)
-	.then((res) => res.json())
-	.then(({ catName, products }) => {
-		mainElement.innerHTML = ` 
-      <h1>${catName}</h1>
-      <p class="category__subtitle">Listado de todos los productos de la categoria <span>${catName}</span></p>
-    `
-		const productList = document.createElement("ul")
-		productList.classList.add("product-list")
-
-		products.forEach((product) =>
-			productList.appendChild(createProductItem(product))
-		)
-
-		mainElement.appendChild(productList)
-	})
 
 const handleFavorite = (element, id) => {
-	console.log(element)
 	element.classList.toggle("active")
 	element.classList.toggle("inactive")
 	if (favorites.includes(id)) {
@@ -64,3 +46,89 @@ const handleFavorite = (element, id) => {
 	}
 	localStorage.setItem("favorites", JSON.stringify(favorites))
 }
+
+const normalizeString = (str) => {
+	return str
+		.replaceAll("á", "a")
+		.replaceAll("é", "e")
+		.replaceAll("í", "i")
+		.replaceAll("ó", "o")
+		.replaceAll("u", "u")
+}
+
+const sortItems = (products, criteria) => {
+	if (criteria == "price-desc")
+		return products.sort((a, b) =>
+			b.cost - a.cost
+		)
+
+	if (criteria == "price-asc")
+		return products.sort((a, b) =>
+			a.cost - b.cost
+		)
+
+	if (criteria == "rel-desc")
+		return products.sort((a, b) =>
+			b.soldCount - a.soldCount
+		)
+	return products
+}
+
+const filterByName = (products, value) =>
+	value ?
+		products.filter((product) =>
+			normalizeString(product.name.toLowerCase()).includes(
+				normalizeString(value.toLowerCase())
+			)
+		) : products
+
+const filterByPrice = (products, min, max) => products.filter((product) => product.cost >= min && product.cost <= max)
+
+const renderList = () => {
+	products = sortItems(
+		filterByName(
+			filterByPrice(allProducts, minPrice || 0, maxPrice || Infinity),
+			searchInputValue
+		),
+		sortCriteria
+	)
+	productListItem.innerHTML = ""
+	products.forEach((product) => {
+		productListItem.innerHTML += createProductItem(product)
+	})
+}
+
+document
+	.querySelector("#search-filter")
+	.addEventListener("input", ({ target }) => {
+		searchInputValue = target.value
+		renderList()
+	})
+document.querySelectorAll("#products__sorts-ctn button").forEach((button) => {
+	button.addEventListener("click", () => {
+		sortCriteria = button.value
+		renderList()
+	})
+})
+document.querySelector("#apply-filters").addEventListener("click", () => {
+	minPrice = document.querySelector("#min-price-filter").value
+	maxPrice = document.querySelector("#max-price-filter").value
+	renderList()
+})
+document.querySelector("#clear-filter").addEventListener("click", () => {
+	document.querySelector("#min-price-filter").value = ""
+	document.querySelector("#max-price-filter").value = ""
+	minPrice = undefined
+	maxPrice = undefined
+	renderList()
+})
+const catId = localStorage.getItem("catID")
+fetch(`https://japceibal.github.io/emercado-api/cats_products/${catId}.json`)
+	.then((res) => res.json())
+	.then(({ catName, products }) => {
+		document.querySelector("h1").innerHTML = catName
+		document.querySelector("#subtitle-name").innerHTML = catName
+		allProducts = products
+		renderList(products)
+		mainElement.appendChild(productListItem)
+	})
