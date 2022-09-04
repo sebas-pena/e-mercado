@@ -27,10 +27,7 @@ form.addEventListener("submit", (e) => {
 		: hideError(passwordInput)
 
 	if (email.length > 0 && password.length > 0) {
-		localStorage.setItem(
-			"user",
-			JSON.stringify({ email, name: "nombre", photoUrl: "" })
-		)
+		localStorage.setItem("user", email)
 		window.location.replace("./")
 	}
 })

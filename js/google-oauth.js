@@ -22,14 +22,7 @@ document.querySelector("#google-singin").addEventListener("click", async () => {
 	provider.addScope("profile")
 	signInWithPopup(auth, provider).then(({ user }) => {
 		const { displayName, email, photoUrl } = user
-		window.localStorage.setItem(
-			"user",
-			JSON.stringify({
-				name: displayName,
-				email,
-				photoUrl,
-			})
-		)
+		window.localStorage.setItem("user", email)
 		window.location.href = "./"
 	})
 })

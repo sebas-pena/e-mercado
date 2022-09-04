@@ -192,3 +192,59 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+/* Estilos nuevos */
+nav{
+  background-color: #689cfa;
+}
+#user-nav{
+  position: relative;
+  min-width: 120px;
+}
+#user-nav__btn{
+  width: 100%;
+  text-align: start;
+  border: none;
+  background-color: transparent;
+  border-radius: 6px;
+  padding-left:10px ;
+  padding-right:10px ;
+}
+#user-nav__btn:hover{
+  border-radius: 6px;
+  background-color: #ffffff47;
+}
+#user-nav__btn.active{
+  border-radius: 6px 6px 0 0;
+  background-color: #ffffff47;
+}
+#user-nav > div{
+  position: absolute;
+  top: 100%;
+  display: none;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px -1px #00000030;
+
+}
+#user-nav > div.open{
+  display: block;
+}
+#user-nav > div > button:hover,
+#user-nav > div > a:hover{
+  background-color: rgb(234, 234, 234);
+}
+  
+  #user-nav > div > button,
+  #user-nav > div > a{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 36px;
+  width: 100%;
+  padding: 0 0 0 10px;
+  background-color: transparent;
+  color: #333;
+  border: none;
+}
