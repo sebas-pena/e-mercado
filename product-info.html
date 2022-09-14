@@ -15,6 +15,7 @@
 		<link href="css/font-awesome.min.css" rel="stylesheet" />
 		<link href="css/bootstrap.min.css" rel="stylesheet" />
 		<link href="css/styles.css" rel="stylesheet" />
+		<link href="css/product-info.css" rel="stylesheet" />
 	</head>
 
 	<body>
@@ -48,9 +49,37 @@
 			</div>
 		</nav>
 		<main>
-			<div class="container">
-				<div class="alert alert-danger text-center" role="alert">
-					<h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+			<a href="/products.html" id="category">Volver al listado</a>
+			<div id="product__ctn">
+				<img id="gallery__display" />
+				<ul id="gallery__list"></ul>
+				<h1 id="product__title"></h1>
+				<div id="product-info">
+					<div id="product__rating"></div>
+					<p id="product__description"></p>
+					<div id="product__sold-count"></div>
+					<p id="product__price"></p>
+					<button id="buy">Añadir al carro</button>
+				</div>
+			</div>
+			<div id="product__bottom">
+				<div id="comments__ctn">
+					<div class="add-comment__form">
+						<input
+							type="text"
+							name="user-comment"
+							placeholder="Añade una reseña..."
+							id="comment-input"
+							autocomplete="off"
+						/>
+						<button>Agregar</button>
+					</div>
+					<div id="add-comment__star"></div>
+					<ul id="comments__list"></ul>
+				</div>
+				<div id="aside">
+					<h2>Productos relacionados</h2>
+					<ul id="related-products__ctn"></ul>
 				</div>
 			</div>
 		</main>

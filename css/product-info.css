@@ -1,0 +1,235 @@
+:root{
+  --PillBackground: #fbfbfb;
+}
+*{
+  box-sizing: border-box;
+}
+main{
+  max-width: 1000px;
+  padding: 20px;
+  margin: auto;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+button{
+  border: none;
+  transition: all .2s ease-in-out;
+}
+button:focus{
+  outline: none;
+}
+
+#product__ctn{
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  grid-template-columns: auto auto 350px;
+  grid-template-areas: 
+  "display display title"
+  "display display info"
+  "display display info"
+  "img-list img-list ."
+  ;
+  column-gap: 40px;
+  row-gap: 0;
+  margin: 20px 0;
+  width: 100%;
+}
+
+#gallery__display{
+  grid-area: display;
+  width: 100%;
+  border-radius: 15px;
+}
+#gallery__list{
+  grid-area: img-list;
+  display: flex;
+  gap: 5px;
+  margin: 15px 0 0 0 ;
+}
+#gallery__list > li{
+  flex: 1;
+}
+#gallery__list > li > img {
+  width: 100%;
+  border-radius: 5px;
+}
+#gallery__list > li.focus > img {
+  outline: 2px solid #2198f3
+}
+#product__title{
+  grid-area: title;
+  padding: 15px 20px 10px 20px;
+  margin: 0;
+  border-radius: 10px 10px 0 0;
+  font-size: 22px;
+  background-color: var(--PillBackground);
+}
+#product-info{
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 20px 20px;
+  padding-top: 0;
+  border-radius: 0 0 10px 10px;
+  background-color: var(--PillBackground);
+}
+#product__rating{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+#product__price{
+  flex: 1;
+  padding-top: 10px;
+  font-size: 24px;
+}
+#buy {
+  width: 100%;
+  height: 40px;
+  background-color: #3483fa;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+}
+#buy:hover{
+  background-color: #2968c8;
+}
+
+#product__bottom{
+  display: grid;
+  grid-template-columns: auto auto 350px;
+  grid-template-areas: 
+  "comment comment aside"
+  ;
+  column-gap: 40px;
+  row-gap: 0;
+  margin: 20px 0;
+  width: 100%;
+}
+#comments__ctn{
+  grid-area: comment;
+}
+.add-comment__form{
+  display: flex;
+  gap: 10px;
+}
+
+.add-comment__form input{
+  flex: 1;
+  border-radius: 6px;
+  padding: 0 20px;
+  border: 1px solid #000;
+}
+
+#add-comment__star{
+  display: flex;
+  margin-top: 5px;
+  user-select: none;
+}
+
+#add-comment__star > svg {
+  box-sizing: content-box;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.add-comment__form input:focus{
+  border: 1px solid #2968c8;
+  outline: 1px solid #2968c8;
+}
+
+.add-comment__form button{
+  padding: 10px 20px;
+  border-radius: 6px;
+  background-color: #dbdbdb;
+}
+
+.add-comment__form button:hover{
+  background-color: #cdcdcd;
+}
+#user-comment {
+  position: relative;
+}
+.user-comment__delete-btn{
+  position: absolute;
+  right: 10px;
+  background-color: #ff8e86;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background .3s ease-in-out;
+}
+.user-comment__delete-btn:hover{
+  background-color: #fa766d;
+}
+
+#comments__list > li{
+  width: 100%;
+  background-color: var(--PillBackground);
+  padding: 10px 15px;
+  margin-top: 15px;
+  border-radius: 6px;
+}
+.comment__user{
+  font-weight: 500;
+  margin-bottom: 5px
+}
+.comment__user > span {
+  position: relative;
+  top: -2px;
+  padding-left: 5px;
+}
+.comment__description{
+  margin: 0;
+  margin-bottom: 5px
+}
+.comment__description > .comment {
+  padding-right: 10px;
+}
+.comment__description > .date {
+  display: inline-block;
+  width: max-content;
+  color: #afafaf
+}
+.comment__like{
+  background-color: transparent;
+  color: #3483fa;
+  padding: 0;
+}
+.comment__like:hover{
+  color: #2968c8;
+}
+
+#related-products__ctn{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 20px;
+}
+#aside > h2 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+#related-products__ctn li {
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--PillBackground);
+  cursor: pointer;
+  box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 10%);
+}
+#related-products__ctn img {
+  width: 100%;
+}
+#related-products__ctn p {
+  text-align: center;
+  font-weight: 500;
+  margin: 0;
+  padding: 5px 0;
+}
