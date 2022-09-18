@@ -233,3 +233,116 @@ button:focus{
   margin: 0;
   padding: 5px 0;
 }
+
+@media screen and (max-width : 950px) {
+  #product__ctn{
+    column-gap: 20px;
+  }
+}
+@media screen and (max-width : 900px) {
+  #product__ctn{
+    display: grid;
+    grid-template-areas: 
+    "display display display title"
+    "display display display info"
+    "display display display info"
+    "img-list img-list img-list . "
+    ;
+    column-gap: 10px;
+    } 
+
+    #product__bottom{
+      grid-template-areas: 
+      "comment comment comment"
+      "aside aside aside"
+      ;
+    }
+    #aside{
+      grid-area: aside;
+    }
+    #related-products__ctn {
+      flex-direction: row;
+    }
+    #related-products__ctn > li{
+      flex: 1;
+    }
+}
+@media screen and (max-width : 760px) {
+  #product__ctn{
+    display: grid;
+    grid-template-areas: 
+    "display display display title"
+    "display display display info"
+    "img-list img-list img-list info"
+    ;
+    column-gap: 10px;
+    } 
+}
+@media screen and (max-width : 734px) {
+  #product__ctn{
+  display: grid;
+  grid-template-areas: 
+  "title title title title"
+  "img-list display display display"
+  "img-list display display display"
+  "img-list display display display"
+  "img-list display display display"
+  "info info info info "
+  ;
+  column-gap: 10px;
+  } 
+  #product__title{
+    padding-left: 0;
+    margin-bottom: 10px;
+    font-size: 24px;
+    background-color: #fff;
+  }
+  #gallery__list{
+    flex-direction: column;
+    padding-top: 2px;
+    gap: 12px;
+    margin: 0;
+  }
+  #gallery__list > li{
+    flex: 0;
+  }
+  #product-info{
+    margin: 20px 0;
+    padding: 0;
+    background-color: #fff;
+  }
+}
+@media screen and (max-width : 630px) {
+  #product__ctn{
+  display: grid;
+  grid-template-areas: 
+  "title title title title title"
+  "img-list img-list display display display"
+  "img-list img-list display display display"
+  "img-list img-list display display display"
+  "img-list img-list display display display"
+  "info info info info info "
+  ;
+  column-gap: 10px;
+  } 
+  #product__title{
+    padding-left: 0;
+    margin-bottom: 10px;
+    font-size: 24px;
+    background-color: #fff;
+  }
+  #gallery__list{
+    flex-direction: column;
+    padding-top: 2px;
+    gap: 12px;
+    margin: 0;
+  }
+  #gallery__list > li{
+    flex: 0;
+  }
+  #product-info{
+    margin: 20px 0;
+    padding: 0;
+    background-color: #fff;
+  }
+}
