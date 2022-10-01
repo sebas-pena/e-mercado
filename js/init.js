@@ -56,6 +56,8 @@ const createNavUserDropDown = () => {
 	userNavItem.innerHTML = `
 	<button id="user-nav__btn" class="nav-link nav-user__btn">${userEmail}</button>
 	<div id="user-nav__select-box">
+		<a href="./cart.html" >Mi carrito</a>
+		<a href="./my-profile.html" >Mi perfil</a>
 		<button id="logout-btn">Cerrar sesión</button>
 	</div>
 	`
