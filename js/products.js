@@ -21,7 +21,7 @@ const createProductItem = ({
 	const item = document.createElement("li")
 	item.addEventListener("click", (e) => {
 		localStorage.setItem("productID", id)
-		location.href = "/product-info.html"
+		location.href = "./product-info.html"
 	})
 	item.innerHTML = `
 		<div class="product__ctn"> 
