@@ -24,7 +24,7 @@ fetch(`https://japceibal.github.io/emercado-api/products/${productId}.json`)
         imageOnFocus = item
         item.classList.add("focus")
       }
-      item.addEventListener("mouseenter", () => {
+      item.addEventListener("click", () => {
         galleryDisplayElement.setAttribute("src", imageUrl)
         imageOnFocus.classList.remove("focus")
         item.classList.add("focus")
