@@ -243,6 +243,7 @@ button:focus{
 @media screen and (max-width : 900px) {
   #product__ctn{
     display: grid;
+    grid-template-columns: auto;
     grid-template-areas: 
     "display display display title"
     "display display display info"
