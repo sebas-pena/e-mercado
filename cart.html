@@ -15,6 +15,7 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet" />
 		<link href="css/font-awesome.min.css" rel="stylesheet" />
 		<link href="css/styles.css" rel="stylesheet" />
+		<link href="css/cart.css" rel="stylesheet" />
 	</head>
 
 	<body>
@@ -48,10 +49,58 @@
 			</div>
 		</nav>
 		<main>
-			<div class="container">
-				<div class="alert alert-danger text-center" role="alert">
-					<h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+			<div class="cart-ctn">
+				<div class="cart__header">
+					<h2>Carrito</h2>
 				</div>
+				<table>
+					<thead>
+						<th>Detalles</th>
+						<th>Cantidad</th>
+						<th>Precio</th>
+						<th>Total</th>
+					</thead>
+					<tbody id="cart-list"></tbody>
+				</table>
+			</div>
+			<div class="details-ctn">
+				<h2>Detalles</h2>
+				<div>
+					<div>
+						<h3>Detalles de Envio:</h3>
+						<label>
+							<input type="radio" name="envio" /><span
+								>Premium 2 a 5 dias 15%</span
+							>
+						</label>
+						<label>
+							<input type="radio" name="envio" /><span
+								>Express 5 a 8 dias 7%</span
+							>
+						</label>
+						<label>
+							<input type="radio" name="envio" /><span
+								>Standar 12 a 15 dias 5%</span
+							>
+						</label>
+					</div>
+					<div>
+						<h3>Detalles de entrega:</h3>
+						<label class="shipping-input">
+							<p>Calle:</p>
+							<input />
+						</label>
+						<label class="shipping-input">
+							<p>Número:</p>
+							<input />
+						</label>
+						<label class="shipping-input">
+							<p>Esquina:</p>
+							<input />
+						</label>
+					</div>
+				</div>
+				<button id="pay">Proceder al pago</button>
 			</div>
 		</main>
 		<footer class="text-muted">
