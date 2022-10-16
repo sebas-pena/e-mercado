@@ -1,0 +1,153 @@
+main {
+   display: flex;
+   max-width: 1100px;
+   margin: auto;
+   gap: 50px;
+   padding-left: 20px;
+}
+
+.cart-ctn{
+  flex: 1;
+}
+.cart-ctn h2{
+  margin-top: 20px;
+}
+
+table{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0px 20px;
+}
+table th{
+  font-size: 19px;
+  font-weight: 500;
+  color: #333
+}
+table img{
+  height: 90px;
+  width: 150px;
+  object-fit: contain;
+}
+table th:not(:last-child), table td:not(:last-child) {
+  padding-right: 20px;
+}
+table th:last-child{
+  max-width: 200px;
+}
+.product-name{
+  font-weight: 500;
+}
+.product-controls{
+  display: inline-flex;
+}
+.quantity-input{
+  text-align: center;
+  box-sizing: border-box;
+  width: 50px;
+  height: 30px;
+  border: none;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.quantity-input:focus{
+  outline: none;
+   border-top: 1px solid #d2d2d2;
+  border-bottom: 1px solid #d2d2d2;
+}
+.quantity-remove,
+.quantity-add{
+  height: 30px;
+  width: 30px;
+  border: none;
+  border-radius: 2px;
+  transition: all .3s ease-in-out;
+}
+.quantity-remove:hover,
+.quantity-add:hover{
+  background-color: #d2d2d2;
+}
+.details-ctn{
+  width: 290px;
+  padding: 20px;
+  gap: 20px;
+}
+.details-ctn,
+.details-ctn div{
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f8f8;
+}
+.details-ctn > div{
+  gap: 20px;
+}
+.details-ctn > div > div{
+  gap: 10px;
+}
+.details-ctn label input {
+  margin-right: 10px;
+}
+.shipping-input > input {
+  border: 1px solid #eee;
+  border-radius: 5px;
+  width: 100%;
+}
+.cart-ctn p,
+.details-ctn p {
+  margin-bottom: 0
+}
+h2{
+  margin: 0;
+}
+h3{
+  font-size: 19px;
+  font-weight: 500;
+  margin: 0;
+}
+#pay {
+  width: 100%;
+  height: 40px;
+  background-color: #3483fa;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  transition: all .3s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+#pay:hover{
+  background-color: #2968c8;
+}
+
+@media screen and (max-width: 900px) {
+  main{
+    flex-direction: column;
+  }
+  main{
+    padding: 0 20px;
+  }
+  .details-ctn {
+    width: 100%;
+  }
+  .details-ctn div div:first-child label{
+    height: 52px;
+    display: flex;
+    align-items: center;
+  }
+  .details-ctn > div{
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .details-ctn > div > div{
+    flex: 1;
+  }
+  #pay{
+    width: 300px;
+    margin: auto;
+  }
+}
+@media screen and (max-width: 600px) {
+  .details-ctn > div{
+    flex-direction: column;
+  }
+}
