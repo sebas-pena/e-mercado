@@ -2,7 +2,7 @@ const productId = localStorage.getItem("productID")
 
 fetch(`https://japceibal.github.io/emercado-api/products/${productId}.json`)
   .then((res) => res.json())
-  .then(({ name, description, images, soldCount, currency, cost, relatedProducts }) => {
+  .then(({ name, description, images, soldCount, currency, cost, relatedProducts, id }) => {
     // TITULO
     document.querySelector("#product__title").textContent = name
     // DESCRIPCIÓN
@@ -49,6 +49,25 @@ fetch(`https://japceibal.github.io/emercado-api/products/${productId}.json`)
         location.reload()
       })
       relatedProductsElement.appendChild(item)
+    })
+    // AÑADIR AL CARRITO
+    document.querySelector("#buy").addEventListener("click", () => {
+      const products = JSON.parse(localStorage.getItem("cart")) || []
+      if (products.find(product => product.id == id) == undefined) {
+        console.log(true)
+        products.push(
+          {
+            "id": id,
+            "name": name,
+            "count": 1,
+            "unitCost": cost,
+            "currency": currency,
+            "image": images[0]
+          }
+        )
+        localStorage.setItem("cart", JSON.stringify(products))
+      }
+      console.log(false)
     })
   })
 
@@ -194,3 +213,4 @@ addCommentBtn.addEventListener("click", () => {
   localStorage.setItem("comments", JSON.stringify([...userComments, userComment]))
   renderComments([...productComments, userComment])
 })
+
