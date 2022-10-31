@@ -1,3 +1,6 @@
+body{
+  position: relative;
+}
 main {
    display: flex;
    max-width: 1100px;
@@ -13,6 +16,10 @@ main {
   margin-top: 20px;
 }
 
+input:not([type="radio"]):focus{
+  outline: 1px solid rgb(184, 184, 184);
+}
+
 table{
   width: 100%;
   border-collapse: separate;
@@ -23,7 +30,7 @@ table th{
   font-weight: 500;
   color: #333
 }
-table img{
+table .product-img{
   height: 90px;
   width: 150px;
   object-fit: contain;
@@ -34,6 +41,9 @@ table th:not(:last-child), table td:not(:last-child) {
 table th:last-child{
   max-width: 200px;
 }
+table .total {
+  font-weight: 500;
+}
 .product-name{
   font-weight: 500;
 }
@@ -41,7 +51,9 @@ table th:last-child{
   display: inline-flex;
 }
 .quantity-input{
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
   width: 50px;
   height: 30px;
@@ -83,8 +95,17 @@ table th:last-child{
 .details-ctn > div > div{
   gap: 10px;
 }
+.details-ctn label.radio{
+  display: flex;
+  align-items: center;
+}
 .details-ctn label input {
   margin-right: 10px;
+  height: 32px;
+  padding-left: 10px;
+}
+input:not([type="radio"]).error{
+  outline: 2px solid #fa8787;
 }
 .shipping-input > input {
   border: 1px solid #eee;
@@ -119,6 +140,116 @@ h3{
   background-color: #2968c8;
 }
 
+.delete-btn{
+  outline: none;
+  border: 1px solid #f44336;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  color: #f44336;
+}
+.delete-btn > svg {
+  height: 27px;
+}
+.delete-btn:hover{
+  outline: 1px solid #f44336;
+}
+
+.queria-usar-la-clase-modal-pero-bootstrap-me-lo-esconde-hernan{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  height: 100vh;
+  width: 100vw;
+  background-color:#00000024;
+}
+.queria-usar-la-clase-modal-pero-bootstrap-me-lo-esconde-hernan.hidden{
+  display: none;
+}
+.pay-modal{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 32px;
+  background-color: #fff;
+  border-radius: 10px;
+  font-size: 16px;
+}
+.pay-modal h2{
+  font-size: 25px;
+  font-weight: 500;
+}
+.pay-modal .payment-method{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dbdbdb;
+}
+.pay-modal > div {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.pay-modal > div label p{
+  margin-bottom: 10px;
+}
+
+.pay-modal input:not([type="radio"]){
+  border-radius: 5px;
+  height: 32px;
+  width: 200px;
+  padding: 0 10px;
+  border: 1px solid rgb(184, 184, 184);
+}
+
+.pay-modal > div > div{
+  display: flex;
+  gap: 15px;
+}
+
+#payment__card-cvv{
+  width: 110px;
+}
+
+.pay-modal button{
+  height: 44px;
+  background-color: #3483fa;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  transition: all .3s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+.pay-modal button:hover{
+  background-color: #2968c8;
+}
+
+.payment-successful-message{
+  position: fixed;
+  display: inline-block;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #d0f7d0;
+  color: #5db45d;
+  padding: 10px 20px;
+  top: 50px;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  border: 1px solid #c6e3c7;
+  transition: all 1s ease-in-out;
+  opacity: 0;
+}
+.payment-successful-message > p{
+  margin: 0;
+  font-size: 20px;
+}
+
 @media screen and (max-width: 900px) {
   main{
     flex-direction: column;
@@ -146,6 +277,7 @@ h3{
     margin: auto;
   }
 }
+
 @media screen and (max-width: 600px) {
   .details-ctn > div{
     flex-direction: column;
